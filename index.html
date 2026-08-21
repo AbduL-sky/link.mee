@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love.css 🌹</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Georgia,"Times New Roman",serif;
+}
+
+/* =========================
+   MAIN SCREEN
+========================= */
+
+.scene{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    background:#000;
+}
+
+/* subtle red atmosphere */
+
+.redGlow{
+    position:absolute;
+    width:330px;
+    height:330px;
+    left:50%;
+    top:52%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:rgba(110,0,20,.10);
+    filter:blur(75px);
+    transition:2s;
+}
+
+.scene.bloom .redGlow{
+    width:430px;
+    height:430px;
+    background:rgba(150,0,30,.18);
+    animation:romanticPulse 3s ease-in-out infinite;
+}
+
+@keyframes romanticPulse{
+    0%, 100%{
+        box-shadow:
+            0 0 40px rgba(255,20,60,.3),
+            0 0 80px rgba(255,0,50,.15);
+    }
+    50%{
+        box-shadow:
+            0 0 60px rgba(255,20,60,.5),
+            0 0 120px rgba(255,0,50,.25);
+    }
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+    position:absolute;
+    font-size:24px;
+    opacity:0;
+    animation:float 4s ease-in forwards;
+    filter:drop-shadow(0 0 6px rgba(255,20,60,.8));
+    pointer-events:none;
+}
+
+.heart1{
+    left:20%;
+    bottom:15%;
+    animation-delay:9.5s;
+}
+
+.heart2{
+    left:75%;
+    bottom:20%;
+    font-size:18px;
+    animation-delay:10s;
+}
+
+.heart3{
+    left:35%;
+    bottom:10%;
+    font-size:20px;
+    animation-delay:10.5s;
+}
+
+.heart4{
+    left:65%;
+    bottom:18%;
+    font-size:16px;
+    animation-delay:11s;
+}
+
+.heart5{
+    left:45%;
+    bottom:12%;
+    font-size:22px;
+    animation-delay:11.5s;
+}
+
+@keyframes float{
+    0%{
+        opacity:1;
+        transform:translateY(0) scale(0);
+    }
+    10%{
+        opacity:1;
+        transform:translateY(-20px) scale(1);
+    }
+    90%{
+        opacity:1;
+        transform:translateY(-180px) scale(1);
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-220px) scale(0.8);
+    }
+}
+
+/* =========================
+   SPARKLES
+========================= */
+
+.sparkle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#fff;
+    border-radius:50%;
+    opacity:0;
+    filter:drop-shadow(0 0 3px rgba(255,100,150,.9));
+    pointer-events:none;
+}
+
+.spark1{
+    left:calc(50% - 60px);
+    top:calc(50% - 50px);
+    animation:twinkle 2s ease-in-out infinite;
+    animation-delay:8.5s;
+}
+
+.spark2{
+    left:calc(50% + 50px);
+    top:calc(50% - 45px);
+    animation:twinkle 2.2s ease-in-out infinite;
+    animation-delay:8.8s;
+}
+
+.spark3{
+    left:calc(50% - 40px);
+    top:calc(50% + 35px);
+    animation:twinkle 1.8s ease-in-out infinite;
+    animation-delay:9.1s;
+}
+
+.spark4{
+    left:calc(50% + 70px);
+    top:calc(50% + 25px);
+    animation:twinkle 2.3s ease-in-out infinite;
+    animation-delay:9.4s;
+}
+
+.spark5{
+    left:calc(50% - 70px);
+    top:calc(50% + 10px);
+    animation:twinkle 1.9s ease-in-out infinite;
+    animation-delay:8.7s;
+}
+
+@keyframes twinkle{
+    0%, 100%{
+        opacity:0;
+        transform:scale(0);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   LOVE.CSS CARD
+========================= */
+
+.card{
+    position:absolute;
+    z-index:20;
+
+    left:50%;
+    top:37%;
+
+    width:205px;
+
+    transform:translate(-50%,-50%);
+
+    padding:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32,5,12,.95),
+            rgba(13,2,6,.95)
+        );
+
+    border:1px solid rgba(255,30,70,.22);
+
+    border-radius:4px;
+
+    box-shadow:
+        0 0 25px rgba(255,0,50,.06),
+        inset 0 0 20px rgba(255,0,50,.03);
+
+    text-align:center;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.card.hide{
+    opacity:0;
+    transform:translate(-50%,-58%) scale(.9);
+    pointer-events:none;
+}
+
+.roseIcon{
+    color:#ff123f;
+    font-size:16px;
+    margin-bottom:5px;
+    text-shadow:0 0 8px #ff003c;
+}
+
+.card h1{
+    color:#fff;
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+.loadingText{
+    color:#777;
+    font-family:Arial,sans-serif;
+    font-size:7px;
+    margin-bottom:8px;
+}
+
+.progress{
+    width:100%;
+    height:2px;
+    background:#27050c;
+    overflow:hidden;
+    margin-bottom:11px;
+}
+
+.progressBar{
+    width:0;
+    height:100%;
+    background:#ff174f;
+    box-shadow:0 0 8px #ff174f;
+    transition:width 3s linear;
+}
+
+.bloomButton{
+    width:100%;
+    height:27px;
+
+    border:0;
+    border-radius:3px;
+
+    background:#281016;
+
+    color:#666;
+
+    font-family:Arial,sans-serif;
+    font-size:7px;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.bloomButton.ready{
+    background:#ff1450;
+    color:#fff;
+
+    box-shadow:
+        0 0 10px rgba(255,20,80,.55),
+        0 0 25px rgba(255,20,80,.20);
+}
+
+/* =========================
+   FLOWER CONTAINER
+========================= */
+
+.flowerScene{
+    position:absolute;
+
+    left:50%;
+    top:55%;
+
+    width:260px;
+    height:380px;
+
+    transform:translate(-50%,-50%);
+}
+
+.roseName{
+    position:absolute;
+    left:50%;
+    top:0;
+    z-index:12;
+    color:#ffd6dc;
+    font-size:18px;
+    font-style:italic;
+    letter-spacing:1px;
+    opacity:0;
+    transform:translate(-50%,-8px);
+    text-shadow:0 0 10px rgba(255,35,75,.65);
+    transition:opacity 1.5s ease, transform 1.5s ease;
+    white-space:nowrap;
+}
+
+.scene.bloom .roseName{
+    opacity:1;
+    transform:translate(-50%,0);
+    transition-delay:8.2s;
+}
+
+/* =========================
+   STEM
+========================= */
+
+.stem{
+    position:absolute;
+
+    left:50%;
+    bottom:42px;
+
+    width:3px;
+    height:0;
+
+    transform:translateX(-50%);
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            to right,
+            #043c15,
+            #18a33d,
+            #07541e
+        );
+
+    box-shadow:
+        0 0 4px rgba(0,255,70,.2);
+
+    transition:
+        height 4s cubic-bezier(.2,.8,.2,1);
+}
+
+.scene.bloom .stem{
+    height:190px;
+}
+
+/* =========================
+   LEAVES
+========================= */
+
+.leaf{
+    position:absolute;
+
+    width:43px;
+    height:17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #06451b,
+            #15913a,
+            #042d11
+        );
+
+    opacity:0;
+
+    box-shadow:
+        0 0 5px rgba(0,255,60,.1);
+}
+
+.leaf.left{
+    left:calc(50% - 43px);
+    bottom:125px;
+
+    border-radius:100% 0 100% 0;
+
+    transform:
+        rotate(-25deg)
+        scale(0);
+
+    transform-origin:right center;
+}
+
+.leaf.right{
+    left:50%;
+    bottom:96px;
+
+    border-radius:0 100% 0 100%;
+
+    transform:
+        rotate(25deg)
+        scale(0);
+
+    transform-origin:left center;
+}
+
+.scene.bloom .leaf.left{
+    animation:leafLeft 1.5s 3.2s forwards;
+}
+
+.scene.bloom .leaf.right{
+    animation:leafRight 1.5s 3.7s forwards;
+}
+
+@keyframes leafLeft{
+    to{
+        opacity:1;
+        transform:
+            rotate(-25deg)
+            scale(1);
+    }
+}
+
+@keyframes leafRight{
+    to{
+        opacity:1;
+        transform:
+            rotate(25deg)
+            scale(1);
+    }
+}
+
+/* =========================
+   ROSE
+========================= */
+
+.rose{
+    position:absolute;
+
+    left:50%;
+    bottom:220px;
+
+    width:145px;
+    height:115px;
+
+    transform:
+        translateX(-50%)
+        scale(.05);
+
+    opacity:0;
+
+    filter:
+        drop-shadow(
+            0 8px 12px
+            rgba(80,0,12,.65)
+        );
+
+    transition:
+        transform 5s
+        cubic-bezier(.12,.75,.2,1),
+        opacity 1s;
+}
+
+.scene.bloom .rose{
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        scale(1);
+}
+
+/* =========================
+   PETALS
+========================= */
+
+.petal{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:58px;
+    height:72px;
+
+    border-radius:
+        75% 75% 42% 42% /
+        88% 88% 38% 38%;
+
+    background:
+        radial-gradient(
+            ellipse at 42% 18%,
+            #ff8b91 0%,
+            #e92b4c 24%,
+            #a0002b 62%,
+            #350009 100%
+        );
+
+    box-shadow:
+        inset 0 -12px 16px rgba(50,0,8,.55),
+        inset 4px 3px 8px rgba(255,130,140,.24),
+        0 3px 5px rgba(45,0,8,.35);
+
+    transform-origin:
+        50% 90%;
+
+    opacity:0;
+
+    animation-fill-mode:forwards;
+}
+
+/* OUTER PETALS */
+
+.p1{
+    animation-delay:4.8s;
+    transform:
+        translate(-50%,-50%)
+    rotate(-68deg)
+    translateY(-11px)
+    scale(.94);
+}
+
+.p2{
+    animation-delay:5s;
+    transform:
+        translate(-50%,-50%)
+        rotate(-43deg)
+        translateY(-23px)
+        scale(.92);
+}
+
+.p3{
+    animation-delay:5.2s;
+    transform:
+        translate(-50%,-50%)
+        rotate(-18deg)
+        translateY(-32px)
+        scale(.89);
+}
+
+.p4{
+    animation-delay:5.4s;
+    transform:
+        translate(-50%,-50%)
+        rotate(18deg)
+        translateY(-32px)
+        scale(.89);
+}
+
+.p5{
+    animation-delay:5.6s;
+    transform:
+        translate(-50%,-50%)
+        rotate(43deg)
+        translateY(-23px)
+        scale(.92);
+}
+
+.p6{
+    animation-delay:5.8s;
+    transform:
+        translate(-50%,-50%)
+        rotate(68deg)
+        translateY(-11px)
+        scale(.94);
+}
+
+/* SECOND LAYER */
+
+.p7,
+.p8,
+.p9,
+.p10,
+.p11{
+    width:49px;
+    height:63px;
+
+    background:
+        radial-gradient(
+            ellipse at 45% 20%,
+            #ff596d 0%,
+            #dc103d 35%,
+            #820021 72%,
+            #350009 100%
+        );
+}
+
+.p7{
+    animation-delay:6.2s;
+    transform:
+        translate(-50%,-50%)
+        rotate(-58deg)
+        translateY(-13px)
+        scale(.78);
+}
+
+.p8{
+    animation-delay:6.4s;
+    transform:
+        translate(-50%,-50%)
+        rotate(-31deg)
+        translateY(-20px)
+        scale(.76);
+}
+
+.p9{
+    animation-delay:6.6s;
+    transform:
+        translate(-50%,-50%)
+        rotate(-5deg)
+        translateY(-23px)
+        scale(.72);
+}
+
+.p10{
+    animation-delay:6.8s;
+    transform:
+        translate(-50%,-50%)
+        rotate(29deg)
+        translateY(-19px)
+        scale(.76);
+}
+
+.p11{
+    animation-delay:7s;
+    transform:
+        translate(-50%,-50%)
+        rotate(57deg)
+        translateY(-12px)
+        scale(.78);
+}
+
+/* INNER PETALS */
+
+.p12{
+    width:43px;
+    height:58px;
+
+    background:
+        radial-gradient(
+            ellipse at 45% 18%,
+            #ff6b78 0%,
+            #d7113c 42%,
+            #680016 100%
+        );
+
+    animation-delay:7.4s;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-25deg)
+        translateY(-11px)
+        scale(.68);
+}
+
+.p13{
+    width:43px;
+    height:58px;
+
+    animation-delay:7.6s;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(23deg)
+        translateY(-10px)
+        scale(.68);
+}
+
+.p14{
+    width:32px;
+    height:50px;
+
+    animation-delay:7.9s;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(8deg)
+        translateY(-7px)
+        scale(.66);
+}
+
+/* bloom all petals */
+
+.scene.bloom .petal{
+    animation-name:petalBloom;
+}
+
+@keyframes petalBloom{
+
+    0%{
+        opacity:0;
+        filter:brightness(.4);
+    }
+
+    40%{
+        opacity:.65;
+    }
+
+    75%{
+        opacity:.95;
+    }
+
+    100%{
+        opacity:1;
+        filter:brightness(1);
+    }
+}
+
+/* =========================
+   ROSE CENTER
+========================= */
+
+.center{
+    position:absolute;
+
+    left:50%;
+    top:53%;
+
+    width:24px;
+    height:28px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 40% 30%,
+            #ff5968,
+            #c0002d 50%,
+            #4c000e
+        );
+
+    opacity:0;
+
+    z-index:10;
+
+    transition:opacity .7s;
+}
+
+.scene.bloom .center{
+    opacity:1;
+    transition-delay:8.2s;
+}
+
+/* =========================
+   FALLING PETALS
+========================= */
+
+.fallingPetal{
+    position:absolute;
+
+    top:-20px;
+
+    width:7px;
+    height:11px;
+
+    border-radius:
+        100% 0 100% 0;
+
+    background:#c9002c;
+
+    opacity:0;
+}
+
+.scene.bloom .fallingPetal{
+    animation:fall 6s linear infinite;
+}
+
+.fp1{
+    left:28%;
+    animation-delay:8s!important;
+}
+
+.fp2{
+    left:67%;
+    animation-delay:9s!important;
+}
+
+.fp3{
+    left:38%;
+    animation-delay:10s!important;
+}
+
+.fp4{
+    left:76%;
+    animation-delay:11s!important;
+}
+
+.fp5{
+    left:58%;
+    animation-delay:12s!important;
+}
+
+@keyframes fall{
+
+    0%{
+        opacity:0;
+        transform:
+            translateY(-20px)
+            rotate(0);
+    }
+
+    15%{
+        opacity:.7;
+    }
+
+    80%{
+        opacity:.5;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translateY(720px)
+            translateX(-80px)
+            rotate(360deg);
+    }
+}
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.message{
+    position:absolute;
+
+    left:50%;
+    bottom:12%;
+
+    width:180px;
+
+    transform:
+        translateX(-50%)
+        translateY(18px);
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:
+        opacity 1.8s ease,
+        transform 1.8s ease;
+}
+
+.message.show{
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.messageText{
+    color:#cfcfcf;
+
+    font-size:13px;
+
+    line-height:1.45;
+
+    font-style:italic;
+
+    letter-spacing:.3px;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,.1);
+}
+
+.messageRose{
+    margin-top:7px;
+
+    font-size:12px;
+
+    opacity:.8;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(255,0,30,.5)
+        );
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(min-width:600px){
+
+    .scene{
+        width:720px;
+        height:1280px;
+        max-height:100vh;
+
+        transform:
+            scale(
+                min(
+                    1,
+                    calc(100vh / 1280)
+                )
+            );
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene" id="scene">
+
+    <div class="redGlow"></div>
+
+    <!-- LOVE.CSS INTRO -->
+
+    <div class="card" id="card">
+
+        <div class="roseIcon">🌹</div>
+
+        <h1>For You Aminata</h1>
+
+        <div class="loadingText" id="loadingText">
+            Loading love...
+        </div>
+
+        <div class="progress">
+            <div
+                class="progressBar"
+                id="progressBar">
+            </div>
+        </div>
+
+        <button
+            class="bloomButton"
+            id="bloomButton"
+            disabled>
+
+            TAP TO BLOOM
+
+        </button>
+
+    </div>
+
+
+    <!-- FLOWER -->
+
+    <div class="flowerScene">
+
+        <div class="roseName">Will You be mine..?</div>
+
+        <div class="stem"></div>
+
+        <div class="leaf left"></div>
+
+        <div class="leaf right"></div>
+
+        <div class="rose">
+
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+            <div class="petal p6"></div>
+
+            <div class="petal p7"></div>
+            <div class="petal p8"></div>
+            <div class="petal p9"></div>
+            <div class="petal p10"></div>
+            <div class="petal p11"></div>
+
+            <div class="petal p12"></div>
+            <div class="petal p13"></div>
+            <div class="petal p14"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FALLING PETALS -->
+
+    <div class="fallingPetal fp1"></div>
+    <div class="fallingPetal fp2"></div>
+    <div class="fallingPetal fp3"></div>
+    <div class="fallingPetal fp4"></div>
+    <div class="fallingPetal fp5"></div>
+
+    <!-- FLOATING HEARTS -->
+
+    <div class="heart heart1">❤️</div>
+    <div class="heart heart2">💕</div>
+    <div class="heart heart3">❤️</div>
+    <div class="heart heart4">💕</div>
+    <div class="heart heart5">❤️</div>
+
+    <!-- SPARKLES -->
+
+    <div class="sparkle spark1"></div>
+    <div class="sparkle spark2"></div>
+    <div class="sparkle spark3"></div>
+    <div class="sparkle spark4"></div>
+    <div class="sparkle spark5"></div>
+
+
+    <!-- FINAL TEXT -->
+
+    <div class="message" id="message">
+
+        <div class="messageText">
+            i coded this for you
+        </div>
+
+        <div class="messageRose">
+            🌹
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const scene =
+    document.getElementById("scene");
+
+const card =
+    document.getElementById("card");
+
+const button =
+    document.getElementById("bloomButton");
+
+const progress =
+    document.getElementById("progressBar");
+
+const loadingText =
+    document.getElementById("loadingText");
+
+const message =
+    document.getElementById("message");
+
+
+/* =========================
+   LOADING SEQUENCE
+========================= */
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        progress.style.width = "100%";
+
+    },300);
+
+
+    setTimeout(() => {
+
+        loadingText.textContent =
+            "Love compiled successfully.";
+
+        button.disabled = false;
+
+        button.classList.add("ready");
+
+    },3200);
+
+});
+
+
+/* =========================
+   START BLOOM
+========================= */
+
+button.addEventListener("click", () => {
+
+    button.disabled = true;
+
+    loadingText.textContent =
+        "Compiling love...";
+
+
+    /* remove card */
+
+    setTimeout(() => {
+
+        card.classList.add("hide");
+
+    },300);
+
+
+    /* start flower */
+
+    setTimeout(() => {
+
+        scene.classList.add("bloom");
+
+    },850);
+
+
+    /* final message */
+
+    setTimeout(() => {
+
+        message.classList.add("show");
+
+    },10500);
+
+});
+
+</script>
+
+</body>
+</html>
