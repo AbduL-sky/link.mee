@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Love.css - A romantic animated rose experience, perfect for expressing your love">
   <meta name="theme-color" content="#000">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,6 +33,10 @@
       /* Easings */
       --easing-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
       --easing-bounce: cubic-bezier(0.12, 0.75, 0.2, 1);
+      
+      /* Responsive sizing */
+      --base-font: clamp(12px, 2vw, 16px);
+      --scale: clamp(0.6, 1vw, 1);
     }
 
     /* Respect user's motion preferences */
@@ -63,15 +67,17 @@
     body {
       width: 100%;
       height: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
       overflow: hidden;
       background: var(--color-bg);
+      font-family: Georgia, "Times New Roman", serif;
     }
 
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Georgia, "Times New Roman", serif;
     }
 
     /* =========================
@@ -80,19 +86,25 @@
 
     .scene {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      max-width: 100vw;
       overflow: hidden;
       background: var(--color-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     /* Romantic glow effect */
     .redGlow {
       position: absolute;
-      width: 330px;
-      height: 330px;
+      width: clamp(250px, 35vw, 430px);
+      height: clamp(250px, 35vw, 430px);
       left: 50%;
-      top: 52%;
+      top: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       background: rgba(110, 0, 20, 0.1);
@@ -102,15 +114,12 @@
     }
 
     .scene.bloom .redGlow {
-      width: 430px;
-      height: 430px;
       background: rgba(150, 0, 30, 0.18);
       animation: romanticPulse 3s ease-in-out infinite;
     }
 
     @keyframes romanticPulse {
-      0%,
-      100% {
+      0%, 100% {
         box-shadow: 0 0 40px rgba(255, 20, 60, 0.3),
           0 0 80px rgba(255, 0, 50, 0.15);
       }
@@ -126,7 +135,7 @@
 
     .heart {
       position: absolute;
-      font-size: 24px;
+      font-size: clamp(18px, 3vw, 28px);
       opacity: 0;
       animation: float 4s ease-in forwards;
       filter: drop-shadow(0 0 6px rgba(255, 20, 60, 0.8));
@@ -134,39 +143,11 @@
       will-change: transform;
     }
 
-    .heart1 {
-      left: 20%;
-      bottom: 15%;
-      animation-delay: 9.5s;
-    }
-
-    .heart2 {
-      left: 75%;
-      bottom: 20%;
-      font-size: 18px;
-      animation-delay: 10s;
-    }
-
-    .heart3 {
-      left: 35%;
-      bottom: 10%;
-      font-size: 20px;
-      animation-delay: 10.5s;
-    }
-
-    .heart4 {
-      left: 65%;
-      bottom: 18%;
-      font-size: 16px;
-      animation-delay: 11s;
-    }
-
-    .heart5 {
-      left: 45%;
-      bottom: 12%;
-      font-size: 22px;
-      animation-delay: 11.5s;
-    }
+    .heart1 { left: 20%; bottom: 15%; animation-delay: 9.5s; }
+    .heart2 { left: 75%; bottom: 20%; animation-delay: 10s; }
+    .heart3 { left: 35%; bottom: 10%; animation-delay: 10.5s; }
+    .heart4 { left: 65%; bottom: 18%; animation-delay: 11s; }
+    .heart5 { left: 45%; bottom: 12%; animation-delay: 11.5s; }
 
     @keyframes float {
       0% {
@@ -203,44 +184,14 @@
       will-change: transform;
     }
 
-    .spark1 {
-      left: calc(50% - 60px);
-      top: calc(50% - 50px);
-      animation: twinkle 2s ease-in-out infinite;
-      animation-delay: 8.5s;
-    }
-
-    .spark2 {
-      left: calc(50% + 50px);
-      top: calc(50% - 45px);
-      animation: twinkle 2.2s ease-in-out infinite;
-      animation-delay: 8.8s;
-    }
-
-    .spark3 {
-      left: calc(50% - 40px);
-      top: calc(50% + 35px);
-      animation: twinkle 1.8s ease-in-out infinite;
-      animation-delay: 9.1s;
-    }
-
-    .spark4 {
-      left: calc(50% + 70px);
-      top: calc(50% + 25px);
-      animation: twinkle 2.3s ease-in-out infinite;
-      animation-delay: 9.4s;
-    }
-
-    .spark5 {
-      left: calc(50% - 70px);
-      top: calc(50% + 10px);
-      animation: twinkle 1.9s ease-in-out infinite;
-      animation-delay: 8.7s;
-    }
+    .spark1 { left: calc(50% - 60px); top: calc(50% - 50px); animation: twinkle 2s ease-in-out infinite; animation-delay: 8.5s; }
+    .spark2 { left: calc(50% + 50px); top: calc(50% - 45px); animation: twinkle 2.2s ease-in-out infinite; animation-delay: 8.8s; }
+    .spark3 { left: calc(50% - 40px); top: calc(50% + 35px); animation: twinkle 1.8s ease-in-out infinite; animation-delay: 9.1s; }
+    .spark4 { left: calc(50% + 70px); top: calc(50% + 25px); animation: twinkle 2.3s ease-in-out infinite; animation-delay: 9.4s; }
+    .spark5 { left: calc(50% - 70px); top: calc(50% + 10px); animation: twinkle 1.9s ease-in-out infinite; animation-delay: 8.7s; }
 
     @keyframes twinkle {
-      0%,
-      100% {
+      0%, 100% {
         opacity: 0;
         transform: scale(0);
       }
@@ -258,10 +209,11 @@
       position: absolute;
       z-index: 20;
       left: 50%;
-      top: 37%;
-      width: 205px;
+      top: clamp(30%, 37%, 45%);
+      width: clamp(160px, 85vw, 220px);
+      max-width: 90vw;
       transform: translate(-50%, -50%);
-      padding: 14px;
+      padding: clamp(10px, 3vw, 16px);
       background: linear-gradient(
         145deg,
         rgba(32, 5, 12, 0.95),
@@ -285,26 +237,26 @@
 
     .card__icon {
       color: #ff123f;
-      font-size: 16px;
-      margin-bottom: 5px;
+      font-size: clamp(14px, 4vw, 20px);
+      margin-bottom: clamp(3px, 1vw, 6px);
       text-shadow: 0 0 8px #ff003c;
       display: block;
     }
 
     .card__title {
       color: var(--color-text);
-      font-size: 14px;
-      margin-bottom: 12px;
+      font-size: clamp(12px, 3vw, 16px);
+      margin-bottom: clamp(8px, 2vw, 14px);
       font-weight: 600;
     }
 
     .card__loading {
       color: var(--color-text-muted);
       font-family: Arial, sans-serif;
-      font-size: 7px;
-      margin-bottom: 8px;
+      font-size: clamp(6px, 1.5vw, 9px);
+      margin-bottom: clamp(6px, 1vw, 10px);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     .progress {
@@ -312,7 +264,7 @@
       height: 2px;
       background: #27050c;
       overflow: hidden;
-      margin-bottom: 11px;
+      margin-bottom: clamp(8px, 2vw, 12px);
       border-radius: 1px;
     }
 
@@ -327,13 +279,13 @@
 
     .button {
       width: 100%;
-      height: 27px;
+      height: clamp(24px, 6vw, 32px);
       border: 0;
       border-radius: 3px;
       background: #281016;
       color: #666;
       font-family: Arial, sans-serif;
-      font-size: 7px;
+      font-size: clamp(6px, 1.5vw, 9px);
       cursor: pointer;
       transition: all 0.4s ease;
       font-weight: 600;
@@ -367,9 +319,9 @@
     .flowerScene {
       position: absolute;
       left: 50%;
-      top: 55%;
-      width: 260px;
-      height: 380px;
+      top: clamp(50%, 55%, 60%);
+      width: clamp(200px, 55vw, 320px);
+      height: clamp(280px, 75vw, 420px);
       transform: translate(-50%, -50%);
     }
 
@@ -379,7 +331,7 @@
       top: 0;
       z-index: 12;
       color: #ffd6dc;
-      font-size: 18px;
+      font-size: clamp(14px, 3vw, 22px);
       font-style: italic;
       letter-spacing: 1px;
       opacity: 0;
@@ -403,7 +355,7 @@
     .stem {
       position: absolute;
       left: 50%;
-      bottom: 42px;
+      bottom: clamp(30px, 8%, 50px);
       width: 3px;
       height: 0;
       transform: translateX(-50%);
@@ -420,7 +372,7 @@
     }
 
     .scene.bloom .stem {
-      height: 190px;
+      height: clamp(120px, 35%, 200px);
     }
 
     /* =========================
@@ -429,22 +381,17 @@
 
     .leaf {
       position: absolute;
-      width: 43px;
-      height: 17px;
-      background: linear-gradient(
-        135deg,
-        #06451b,
-        #15913a,
-        #042d11
-      );
+      width: clamp(30px, 8vw, 50px);
+      height: clamp(12px, 4vw, 20px);
+      background: linear-gradient(135deg, #06451b, #15913a, #042d11);
       opacity: 0;
       box-shadow: 0 0 5px rgba(0, 255, 60, 0.1);
       will-change: opacity, transform;
     }
 
     .leaf.left {
-      left: calc(50% - 43px);
-      bottom: 125px;
+      left: calc(50% - clamp(30px, 8vw, 50px));
+      bottom: clamp(80px, 25%, 140px);
       border-radius: 100% 0 100% 0;
       transform: rotate(-25deg) scale(0);
       transform-origin: right center;
@@ -452,7 +399,7 @@
 
     .leaf.right {
       left: 50%;
-      bottom: 96px;
+      bottom: clamp(60px, 20%, 110px);
       border-radius: 0 100% 0 100%;
       transform: rotate(25deg) scale(0);
       transform-origin: left center;
@@ -487,9 +434,9 @@
     .rose {
       position: absolute;
       left: 50%;
-      bottom: 220px;
-      width: 145px;
-      height: 115px;
+      bottom: clamp(140px, 40%, 240px);
+      width: clamp(100px, 25vw, 160px);
+      height: clamp(80px, 20vw, 130px);
       transform: translateX(-50%) scale(0.05);
       opacity: 0;
       filter: drop-shadow(0 8px 12px rgba(80, 0, 12, 0.65));
@@ -511,8 +458,8 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 58px;
-      height: 72px;
+      width: clamp(40px, 10vw, 65px);
+      height: clamp(50px, 13vw, 80px);
       border-radius: 75% 75% 42% 42% / 88% 88% 38% 38%;
       background: radial-gradient(
         ellipse at 42% 18%,
@@ -530,50 +477,16 @@
       will-change: opacity;
     }
 
-    /* OUTER PETALS */
-    .p1 {
-      animation-delay: 4.8s;
-      transform: translate(-50%, -50%) rotate(-68deg) translateY(-11px) scale(0.94);
-    }
+    .p1 { animation-delay: 4.8s; transform: translate(-50%, -50%) rotate(-68deg) translateY(-11px) scale(0.94); }
+    .p2 { animation-delay: 5s; transform: translate(-50%, -50%) rotate(-43deg) translateY(-23px) scale(0.92); }
+    .p3 { animation-delay: 5.2s; transform: translate(-50%, -50%) rotate(-18deg) translateY(-32px) scale(0.89); }
+    .p4 { animation-delay: 5.4s; transform: translate(-50%, -50%) rotate(18deg) translateY(-32px) scale(0.89); }
+    .p5 { animation-delay: 5.6s; transform: translate(-50%, -50%) rotate(43deg) translateY(-23px) scale(0.92); }
+    .p6 { animation-delay: 5.8s; transform: translate(-50%, -50%) rotate(68deg) translateY(-11px) scale(0.94); }
 
-    .p2 {
-      animation-delay: 5s;
-      transform: translate(-50%, -50%) rotate(-43deg) translateY(-23px)
-        scale(0.92);
-    }
-
-    .p3 {
-      animation-delay: 5.2s;
-      transform: translate(-50%, -50%) rotate(-18deg) translateY(-32px)
-        scale(0.89);
-    }
-
-    .p4 {
-      animation-delay: 5.4s;
-      transform: translate(-50%, -50%) rotate(18deg) translateY(-32px)
-        scale(0.89);
-    }
-
-    .p5 {
-      animation-delay: 5.6s;
-      transform: translate(-50%, -50%) rotate(43deg) translateY(-23px)
-        scale(0.92);
-    }
-
-    .p6 {
-      animation-delay: 5.8s;
-      transform: translate(-50%, -50%) rotate(68deg) translateY(-11px)
-        scale(0.94);
-    }
-
-    /* SECOND LAYER */
-    .p7,
-    .p8,
-    .p9,
-    .p10,
-    .p11 {
-      width: 49px;
-      height: 63px;
+    .p7, .p8, .p9, .p10, .p11 {
+      width: clamp(35px, 9vw, 55px);
+      height: clamp(45px, 11vw, 70px);
       background: radial-gradient(
         ellipse at 45% 20%,
         #ff596d 0%,
@@ -583,40 +496,15 @@
       );
     }
 
-    .p7 {
-      animation-delay: 6.2s;
-      transform: translate(-50%, -50%) rotate(-58deg) translateY(-13px)
-        scale(0.78);
-    }
+    .p7 { animation-delay: 6.2s; transform: translate(-50%, -50%) rotate(-58deg) translateY(-13px) scale(0.78); }
+    .p8 { animation-delay: 6.4s; transform: translate(-50%, -50%) rotate(-31deg) translateY(-20px) scale(0.76); }
+    .p9 { animation-delay: 6.6s; transform: translate(-50%, -50%) rotate(-5deg) translateY(-23px) scale(0.72); }
+    .p10 { animation-delay: 6.8s; transform: translate(-50%, -50%) rotate(29deg) translateY(-19px) scale(0.76); }
+    .p11 { animation-delay: 7s; transform: translate(-50%, -50%) rotate(57deg) translateY(-12px) scale(0.78); }
 
-    .p8 {
-      animation-delay: 6.4s;
-      transform: translate(-50%, -50%) rotate(-31deg) translateY(-20px)
-        scale(0.76);
-    }
-
-    .p9 {
-      animation-delay: 6.6s;
-      transform: translate(-50%, -50%) rotate(-5deg) translateY(-23px)
-        scale(0.72);
-    }
-
-    .p10 {
-      animation-delay: 6.8s;
-      transform: translate(-50%, -50%) rotate(29deg) translateY(-19px)
-        scale(0.76);
-    }
-
-    .p11 {
-      animation-delay: 7s;
-      transform: translate(-50%, -50%) rotate(57deg) translateY(-12px)
-        scale(0.78);
-    }
-
-    /* INNER PETALS */
     .p12 {
-      width: 43px;
-      height: 58px;
+      width: clamp(30px, 8vw, 48px);
+      height: clamp(40px, 10vw, 65px);
       background: radial-gradient(
         ellipse at 45% 18%,
         #ff6b78 0%,
@@ -624,27 +512,23 @@
         #680016 100%
       );
       animation-delay: 7.4s;
-      transform: translate(-50%, -50%) rotate(-25deg) translateY(-11px)
-        scale(0.68);
+      transform: translate(-50%, -50%) rotate(-25deg) translateY(-11px) scale(0.68);
     }
 
     .p13 {
-      width: 43px;
-      height: 58px;
+      width: clamp(30px, 8vw, 48px);
+      height: clamp(40px, 10vw, 65px);
       animation-delay: 7.6s;
-      transform: translate(-50%, -50%) rotate(23deg) translateY(-10px)
-        scale(0.68);
+      transform: translate(-50%, -50%) rotate(23deg) translateY(-10px) scale(0.68);
     }
 
     .p14 {
-      width: 32px;
-      height: 50px;
+      width: clamp(23px, 6vw, 36px);
+      height: clamp(35px, 9vw, 56px);
       animation-delay: 7.9s;
-      transform: translate(-50%, -50%) rotate(8deg) translateY(-7px)
-        scale(0.66);
+      transform: translate(-50%, -50%) rotate(8deg) translateY(-7px) scale(0.66);
     }
 
-    /* BLOOM ANIMATION */
     .scene.bloom .petal {
       animation: petalBloom 3s ease-out forwards;
     }
@@ -674,8 +558,8 @@
       position: absolute;
       left: 50%;
       top: 53%;
-      width: 24px;
-      height: 28px;
+      width: clamp(18px, 4vw, 28px);
+      height: clamp(20px, 5vw, 32px);
       transform: translate(-50%, -50%);
       border-radius: 50%;
       background: radial-gradient(
@@ -702,8 +586,8 @@
     .fallingPetal {
       position: absolute;
       top: -20px;
-      width: 7px;
-      height: 11px;
+      width: clamp(5px, 1vw, 9px);
+      height: clamp(8px, 2vw, 14px);
       border-radius: 100% 0 100% 0;
       background: #c9002c;
       opacity: 0;
@@ -714,30 +598,11 @@
       animation: fall 6s linear infinite;
     }
 
-    .fp1 {
-      left: 28%;
-      animation-delay: 8s !important;
-    }
-
-    .fp2 {
-      left: 67%;
-      animation-delay: 9s !important;
-    }
-
-    .fp3 {
-      left: 38%;
-      animation-delay: 10s !important;
-    }
-
-    .fp4 {
-      left: 76%;
-      animation-delay: 11s !important;
-    }
-
-    .fp5 {
-      left: 58%;
-      animation-delay: 12s !important;
-    }
+    .fp1 { left: 28%; animation-delay: 8s !important; }
+    .fp2 { left: 67%; animation-delay: 9s !important; }
+    .fp3 { left: 38%; animation-delay: 10s !important; }
+    .fp4 { left: 76%; animation-delay: 11s !important; }
+    .fp5 { left: 58%; animation-delay: 12s !important; }
 
     @keyframes fall {
       0% {
@@ -763,8 +628,8 @@
     .message {
       position: absolute;
       left: 50%;
-      bottom: 12%;
-      width: 180px;
+      bottom: clamp(10%, 12%, 20%);
+      width: clamp(140px, 90vw, 200px);
       transform: translateX(-50%) translateY(18px);
       text-align: center;
       opacity: 0;
@@ -780,7 +645,7 @@
 
     .message__text {
       color: #cfcfcf;
-      font-size: 13px;
+      font-size: clamp(11px, 2.5vw, 15px);
       line-height: 1.45;
       font-style: italic;
       letter-spacing: 0.3px;
@@ -788,8 +653,8 @@
     }
 
     .message__rose {
-      margin-top: 7px;
-      font-size: 12px;
+      margin-top: clamp(5px, 1vw, 8px);
+      font-size: clamp(10px, 2vw, 14px);
       opacity: 0.8;
       filter: drop-shadow(0 0 5px rgba(255, 0, 30, 0.5));
       display: block;
@@ -801,28 +666,29 @@
 
     .controls {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: clamp(12px, 3vw, 25px);
+      right: clamp(12px, 3vw, 25px);
       z-index: 100;
       display: flex;
-      gap: 10px;
+      gap: clamp(6px, 1.5vw, 12px);
       flex-direction: column;
     }
 
     .control-btn {
-      width: 40px;
-      height: 40px;
+      width: clamp(32px, 8vw, 48px);
+      height: clamp(32px, 8vw, 48px);
       border-radius: 50%;
       border: none;
       background: rgba(255, 20, 80, 0.2);
       color: var(--color-accent);
       cursor: pointer;
-      font-size: 18px;
+      font-size: clamp(14px, 3vw, 22px);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .control-btn:hover {
@@ -835,28 +701,45 @@
     }
 
     /* =========================
-       RESPONSIVE
+       RESPONSIVE ADJUSTMENTS
     ========================= */
 
-    @media (min-width: 600px) {
+    @media (max-width: 480px) {
       .scene {
-        width: 720px;
-        height: 1280px;
-        max-height: 100vh;
-        transform: scale(min(1, calc(100vh / 1280)));
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      }
+      
+      .heart {
+        font-size: clamp(16px, 4vw, 24px);
       }
     }
 
-    @media (max-width: 480px) {
-      .controls {
-        bottom: 15px;
-        right: 15px;
+    @media (max-width: 360px) {
+      .card {
+        width: clamp(140px, 95vw, 180px);
       }
+      
+      .flowerScene {
+        width: clamp(160px, 90vw, 260px);
+        height: clamp(220px, 65vw, 340px);
+      }
+    }
 
-      .control-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
+    @media (landscape) and (max-height: 500px) {
+      .card {
+        top: 35%;
+      }
+      
+      .flowerScene {
+        top: 60%;
+      }
+      
+      .message {
+        bottom: 8%;
+      }
+      
+      .heart {
+        font-size: clamp(14px, 2vw, 20px);
       }
     }
   </style>
@@ -971,10 +854,16 @@
     messageText.textContent = customMessage;
 
     // Sound effects (using Web Audio API for no external dependencies)
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let audioContext;
+    try {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (e) {
+      console.log('Audio context not available');
+      soundEnabled = false;
+    }
 
     function playSound(frequency, duration) {
-      if (!soundEnabled) return;
+      if (!soundEnabled || !audioContext) return;
       
       try {
         const oscillator = audioContext.createOscillator();
@@ -992,112 +881,68 @@
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + duration);
       } catch (e) {
-        console.log('Audio not available');
+        console.log('Audio playback failed');
       }
     }
 
     // Simulate loading with progress bar
     function startLoading() {
       let progress = 0;
-      const loadingInterval = setInterval(() => {
+      const interval = setInterval(() => {
         progress += Math.random() * 30;
-        if (progress > 100) progress = 100;
-
+        if (progress > 90) progress = 90;
         progressBar.style.width = progress + '%';
-        loadingText.textContent = Math.floor(progress) + '% loading...';
-
-        if (progress === 100) {
-          clearInterval(loadingInterval);
-          bloomButton.disabled = false;
+        
+        if (progress >= 90) {
+          clearInterval(interval);
+          loadingText.textContent = 'Ready!';
           bloomButton.classList.add('ready');
-          playSound(523.25, 0.2); // C note
+          bloomButton.disabled = false;
+          playSound(523.25, 0.1); // C5 note
         }
-      }, 300);
+      }, 400);
     }
 
-    // Bloom animation with sound
-    function triggerBloom() {
+    // Bloom animation
+    function bloom() {
       if (isBloomActive) return;
       isBloomActive = true;
       
+      playSound(659.25, 0.15); // E5 note
       scene.classList.add('bloom');
       card.classList.add('hide');
       
-      playSound(659.25, 0.3); // E note
-      setTimeout(() => playSound(783.99, 0.4), 200); // G note
-      
-      // Show message after delay
       setTimeout(() => {
         message.classList.add('show');
-        playSound(659.25, 0.5); // Final E note
-      }, 8500);
+        playSound(783.99, 0.2); // G5 note
+      }, 8200);
     }
 
     // Reset function
-    function resetAnimation() {
-      isBloomActive = false;
+    function reset() {
       scene.classList.remove('bloom');
       card.classList.remove('hide');
       message.classList.remove('show');
-      bloomButton.disabled = true;
-      bloomButton.classList.remove('ready');
       progressBar.style.width = '0%';
-      loadingText.textContent = 'Loading love...';
+      loadingText.textContent = 'Loading...';
+      bloomButton.classList.remove('ready');
+      bloomButton.disabled = true;
+      isBloomActive = false;
+      
       startLoading();
-      playSound(440, 0.2);
     }
 
     // Event listeners
-    bloomButton.addEventListener('click', triggerBloom);
-    
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && bloomButton.classList.contains('ready')) {
-        bloomButton.click();
-      }
-      if (e.key === ' ') {
-        e.preventDefault();
-        bloomButton.click();
-      }
-    });
-
-    // Touch feedback for mobile
-    bloomButton.addEventListener('touchstart', () => {
-      bloomButton.style.transform = 'scale(0.95)';
-    });
-
-    bloomButton.addEventListener('touchend', () => {
-      bloomButton.style.transform = 'scale(1)';
-    });
-
-    // Sound toggle
+    bloomButton.addEventListener('click', bloom);
     soundToggle.addEventListener('click', () => {
       soundEnabled = !soundEnabled;
       localStorage.setItem('soundEnabled', soundEnabled);
       soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
-      playSound(440, 0.1);
     });
-
-    // Reset button
-    resetBtn.addEventListener('click', resetAnimation);
-
-    // Accessibility: Announce bloom completion
-    scene.addEventListener('animationend', () => {
-      if (scene.classList.contains('bloom')) {
-        message.setAttribute('aria-live', 'assertive');
-      }
-    });
-
-    // Respect prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      soundEnabled = false; // Disable sound for users preferring reduced motion
-    }
+    resetBtn.addEventListener('click', reset);
 
     // Initialize
     startLoading();
-    
-    // Update sound toggle text on load
-    soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
   </script>
 </body>
 </html>
