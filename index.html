@@ -1113,4 +1113,215 @@
     <div class="sparkle spark1"></div>
     <div class="sparkle spark2"></div>
     <div class="sparkle spark3"></div>
- 
+    <div class="sparkle spark4"></div>
+    <div class="sparkle spark5"></div>
+
+    <!-- Falling Petals -->
+    <div class="fallingPetal fp1"></div>
+    <div class="fallingPetal fp2"></div>
+    <div class="fallingPetal fp3"></div>
+    <div class="fallingPetal fp4"></div>
+    <div class="fallingPetal fp5"></div>
+
+    <!-- Hearts -->
+    <div class="heart heart1">❤️</div>
+    <div class="heart heart2">❤️</div>
+    <div class="heart heart3">❤️</div>
+    <div class="heart heart4">❤️</div>
+    <div class="heart heart5">❤️</div>
+
+    <!-- Message -->
+    <div class="message" id="message">
+
+      <div class="message__text">
+        Some flowers fade with time,
+        but the feelings behind this one
+        will always remain. ❤️
+      </div>
+
+      <span class="message__rose">
+        🌹
+      </span>
+
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+
+      <button
+        class="control-btn"
+        id="replayBtn"
+        title="Replay"
+        aria-label="Replay animation"
+      >
+        ↻
+      </button>
+
+      <button
+        class="control-btn"
+        id="soundBtn"
+        title="Sound"
+        aria-label="Toggle sound"
+      >
+        🔇
+      </button>
+
+    </div>
+
+  </main>
+
+  <script>
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const scene = document.getElementById("scene");
+    const card = document.getElementById("card");
+    const progressBar = document.getElementById("progressBar");
+    const startButton = document.getElementById("startButton");
+    const loadingText = document.getElementById("loadingText");
+    const message = document.getElementById("message");
+    const replayBtn = document.getElementById("replayBtn");
+    const soundBtn = document.getElementById("soundBtn");
+
+    let soundOn = false;
+    let audioContext = null;
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+        progressBar.style.width = "100%";
+      }, 100);
+
+      setTimeout(() => {
+        loadingText.textContent = "Ready";
+
+        startButton.disabled = false;
+
+        startButton.textContent = "Open";
+
+        startButton.classList.add("ready");
+      }, 3200);
+
+    });
+
+    /* =========================
+       START
+    ========================= */
+
+    startButton.addEventListener("click", () => {
+
+      card.classList.add("hide");
+
+      scene.classList.add("bloom");
+
+      setTimeout(() => {
+        message.classList.add("show");
+      }, 9000);
+
+      if (soundOn) {
+        startSound();
+      }
+
+    });
+
+    /* =========================
+       REPLAY
+    ========================= */
+
+    replayBtn.addEventListener("click", () => {
+
+      message.classList.remove("show");
+
+      scene.classList.remove("bloom");
+
+      /*
+       * Force browser to rebuild
+       * animation timeline.
+       */
+      void scene.offsetWidth;
+
+      setTimeout(() => {
+        scene.classList.add("bloom");
+      }, 100);
+
+      setTimeout(() => {
+        message.classList.add("show");
+      }, 9100);
+
+    });
+
+    /* =========================
+       SIMPLE ROMANTIC SOUND
+    ========================= */
+
+    function startSound() {
+
+      if (!audioContext) {
+        audioContext =
+          new (
+            window.AudioContext ||
+            window.webkitAudioContext
+          )();
+      }
+
+      const oscillator =
+        audioContext.createOscillator();
+
+      const gain =
+        audioContext.createGain();
+
+      oscillator.type = "sine";
+
+      oscillator.frequency.value = 220;
+
+      gain.gain.setValueAtTime(
+        0.0001,
+        audioContext.currentTime
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.03,
+        audioContext.currentTime + 1
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audioContext.currentTime + 5
+      );
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+
+      oscillator.start();
+
+      oscillator.stop(
+        audioContext.currentTime + 5
+      );
+    }
+
+    /* =========================
+       SOUND BUTTON
+    ========================= */
+
+    soundBtn.addEventListener("click", () => {
+
+      soundOn = !soundOn;
+
+      soundBtn.textContent =
+        soundOn ? "🔊" : "🔇";
+
+      if (soundOn) {
+        startSound();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
