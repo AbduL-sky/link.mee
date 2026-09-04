@@ -3,17 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Love.css - A romantic animated rose experience, perfect for expressing your love">
+  <meta name="description" content="LinkUp🌹 - A romantic animated rose experience, perfect for expressing your feelings">
   <meta name="theme-color" content="#000">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Love.css">
+  <meta name="apple-mobile-web-app-title" content="LinkUp">
+  
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="LinkUp🌹">
+  <meta property="og:description" content="A romantic animated rose to express your love">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='%23000'/%3E%3Ctext x='100' y='120' font-size='60' text-anchor='middle' dominant-baseline='middle'%3E🌹%3C/text%3E%3C/svg%3E">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LinkUp🌹">
+  <meta name="twitter:description" content="A romantic animated rose to express your love">
   
   <title>LinkUp🌹</title>
 
   <style>
     :root {
-      /* Color palette */
+      /* ========================= 
+         COLOR PALETTE 
+      ========================= */
       --color-bg: #000;
       --color-rose-light: #ff8b91;
       --color-rose-medium: #e92b4c;
@@ -24,22 +35,30 @@
       --color-text-muted: #777;
       --color-accent: #ff174f;
       
-      /* Timing */
+      /* ========================= 
+         ANIMATION TIMING 
+      ========================= */
       --timing-card-fade: 0.8s;
       --timing-stem-grow: 4s;
       --timing-rose-bloom: 5s;
       --timing-message-show: 1.8s;
       
-      /* Easings */
+      /* ========================= 
+         ANIMATION EASING 
+      ========================= */
       --easing-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
       --easing-bounce: cubic-bezier(0.12, 0.75, 0.2, 1);
       
-      /* Responsive sizing */
+      /* ========================= 
+         RESPONSIVE SIZING 
+      ========================= */
       --base-font: clamp(12px, 2vw, 16px);
       --scale: clamp(0.6, 1vw, 1);
     }
 
-    /* Respect user's motion preferences */
+    /* ========================= 
+       PREFERS REDUCED MOTION 
+    ========================= */
     @media (prefers-reduced-motion: reduce) {
       :root {
         --timing-card-fade: 0.1s;
@@ -57,6 +76,9 @@
       }
     }
 
+    /* ========================= 
+       GLOBAL RESET 
+    ========================= */
     * {
       margin: 0;
       padding: 0;
@@ -80,10 +102,9 @@
       align-items: center;
     }
 
-    /* =========================
-       MAIN SCENE
+    /* ========================= 
+       MAIN SCENE 
     ========================= */
-
     .scene {
       position: relative;
       width: 100%;
@@ -129,10 +150,9 @@
       }
     }
 
-    /* =========================
-       FLOATING HEARTS
+    /* ========================= 
+       FLOATING HEARTS 
     ========================= */
-
     .heart {
       position: absolute;
       font-size: clamp(18px, 3vw, 28px);
@@ -168,10 +188,9 @@
       }
     }
 
-    /* =========================
-       SPARKLES
+    /* ========================= 
+       SPARKLES 
     ========================= */
-
     .sparkle {
       position: absolute;
       width: 4px;
@@ -201,10 +220,9 @@
       }
     }
 
-    /* =========================
-       CARD
+    /* ========================= 
+       CARD 
     ========================= */
-
     .card {
       position: absolute;
       z-index: 20;
@@ -312,10 +330,14 @@
       transform: scale(0.98);
     }
 
-    /* =========================
-       FLOWER SCENE
-    ========================= */
+    .button.ready:hover {
+      box-shadow: 0 0 15px rgba(255, 20, 80, 0.75),
+        0 0 30px rgba(255, 20, 80, 0.3);
+    }
 
+    /* ========================= 
+       FLOWER SCENE 
+    ========================= */
     .flowerScene {
       position: absolute;
       left: 50%;
@@ -348,10 +370,9 @@
       transition-delay: 8.2s;
     }
 
-    /* =========================
-       STEM
+    /* ========================= 
+       STEM 
     ========================= */
-
     .stem {
       position: absolute;
       left: 50%;
@@ -375,10 +396,9 @@
       height: clamp(120px, 35%, 200px);
     }
 
-    /* =========================
-       LEAVES
+    /* ========================= 
+       LEAVES 
     ========================= */
-
     .leaf {
       position: absolute;
       width: clamp(30px, 8vw, 50px);
@@ -427,10 +447,9 @@
       }
     }
 
-    /* =========================
-       ROSE
+    /* ========================= 
+       ROSE 
     ========================= */
-
     .rose {
       position: absolute;
       left: 50%;
@@ -450,10 +469,9 @@
       transform: translateX(-50%) scale(1);
     }
 
-    /* =========================
-       PETALS
+    /* ========================= 
+       PETALS 
     ========================= */
-
     .petal {
       position: absolute;
       left: 50%;
@@ -550,10 +568,9 @@
       }
     }
 
-    /* =========================
-       ROSE CENTER
+    /* ========================= 
+       ROSE CENTER 
     ========================= */
-
     .center {
       position: absolute;
       left: 50%;
@@ -579,10 +596,9 @@
       transition-delay: 8.2s;
     }
 
-    /* =========================
-       FALLING PETALS
+    /* ========================= 
+       FALLING PETALS 
     ========================= */
-
     .fallingPetal {
       position: absolute;
       top: -20px;
@@ -621,10 +637,9 @@
       }
     }
 
-    /* =========================
-       MESSAGE
+    /* ========================= 
+       MESSAGE 
     ========================= */
-
     .message {
       position: absolute;
       left: 50%;
@@ -644,7 +659,7 @@
     }
 
     .message__text {
-      color: #cfcfcf;
+      color: #e8e8e8;
       font-size: clamp(11px, 2.5vw, 15px);
       line-height: 1.45;
       font-style: italic;
@@ -660,10 +675,9 @@
       display: block;
     }
 
-    /* =========================
-       CONTROLS OVERLAY
+    /* ========================= 
+       CONTROLS OVERLAY 
     ========================= */
-
     .controls {
       position: fixed;
       bottom: clamp(12px, 3vw, 25px);
@@ -700,10 +714,14 @@
       transform: scale(0.95);
     }
 
-    /* =========================
-       RESPONSIVE ADJUSTMENTS
-    ========================= */
+    .control-btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
 
+    /* ========================= 
+       RESPONSIVE ADJUSTMENTS 
+    ========================= */
     @media (max-width: 480px) {
       .scene {
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
@@ -711,6 +729,11 @@
       
       .heart {
         font-size: clamp(16px, 4vw, 24px);
+      }
+
+      .button:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 1px;
       }
     }
 
@@ -742,6 +765,15 @@
         font-size: clamp(14px, 2vw, 20px);
       }
     }
+
+    /* ========================= 
+       PRINT STYLES 
+    ========================= */
+    @media print {
+      body {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -752,7 +784,7 @@
     <!-- CARD INTRO -->
     <div class="card" id="card">
       <div class="card__icon">🌹</div>
-      <h1 class="card__title">For You Patience</h1>
+      <h1 class="card__title">For Your Patience</h1>
 
       <div class="card__loading" id="loadingText">Loading...</div>
 
@@ -818,12 +850,30 @@
 
     <!-- FINAL MESSAGE -->
     <div class="message" id="message" role="status" aria-live="polite">
-      <p class="message__text" id="messageText">This is foe You PePe🌹</p>
+      <p class="message__text" id="messageText">With all my love...</p>
     </div>
   </div>
-  
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button class="control-btn" id="soundToggle" title="Toggle sound" aria-label="Toggle sound on and off">
+      🔊
+    </button>
+    <button class="control-btn" id="resetBtn" title="Reset animation" aria-label="Reset the animation to start">
+      ↻
+    </button>
+  </div>
+
   <script>
-    // Get elements
+    /**
+     * LinkUp🌹 - Romantic Animated Rose
+     * Features: Custom messages, sound control, haptic feedback
+     * URL Parameters: ?msg=Your Message&name=Rose Name
+     */
+
+    // ========================= 
+    // DOM ELEMENTS 
+    // ========================= 
     const scene = document.getElementById('scene');
     const card = document.getElementById('card');
     const bloomButton = document.getElementById('bloomButton');
@@ -835,23 +885,66 @@
     const soundToggle = document.getElementById('soundToggle');
     const resetBtn = document.getElementById('resetBtn');
 
-    // State
+    // ========================= 
+    // STATE MANAGEMENT 
+    // ========================= 
     let isBloomActive = false;
     let soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
-    let customMessage = new URLSearchParams(window.location.search).get('msg') || 'With all my love...';
-
-    // Set custom message
+    
+    // ========================= 
+    // URL PARAMETER PARSING 
+    // ========================= 
+    const urlParams = new URLSearchParams(window.location.search);
+    const customMessage = sanitizeText(urlParams.get('msg')) || 'With all my love...';
+    const customName = sanitizeText(urlParams.get('name')) || 'I Miss You';
+    
+    // Set custom values
     messageText.textContent = customMessage;
+    roseName.textContent = customName;
 
-    // Sound effects (using Web Audio API for no external dependencies)
+    // ========================= 
+    // UTILITY FUNCTIONS 
+    // ========================= 
+    
+    /**
+     * Sanitize text to prevent XSS (already safe with .textContent, but best practice)
+     */
+    function sanitizeText(text) {
+      if (!text) return null;
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.textContent;
+    }
+
+    /**
+     * Trigger haptic feedback on mobile devices
+     */
+    function triggerHaptic(pattern = 50) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        try {
+          navigator.vibrate(pattern);
+        } catch (e) {
+          console.debug('Haptic feedback not available');
+        }
+      }
+    }
+
+    // ========================= 
+    // AUDIO CONTEXT 
+    // ========================= 
     let audioContext;
     try {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
     } catch (e) {
-      console.log('Audio context not available');
+      console.debug('Audio context not available');
       soundEnabled = false;
     }
 
+    /**
+     * Play a simple tone using Web Audio API
+     * @param {number} frequency - Frequency in Hz
+     * @param {number} duration - Duration in seconds
+     */
     function playSound(frequency, duration) {
       if (!soundEnabled || !audioContext) return;
       
@@ -871,11 +964,17 @@
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + duration);
       } catch (e) {
-        console.log('Audio playback failed');
+        console.debug('Audio playback failed');
       }
     }
 
-    // Simulate loading with progress bar
+    // ========================= 
+    // ANIMATION FUNCTIONS 
+    // ========================= 
+
+    /**
+     * Simulate loading with animated progress bar
+     */
     function startLoading() {
       let progress = 0;
       const interval = setInterval(() => {
@@ -893,22 +992,28 @@
       }, 400);
     }
 
-    // Bloom animation
+    /**
+     * Bloom animation - reveals rose with effects
+     */
     function bloom() {
       if (isBloomActive) return;
       isBloomActive = true;
       
+      triggerHaptic(50);
       playSound(659.25, 0.15); // E5 note
       scene.classList.add('bloom');
       card.classList.add('hide');
       
       setTimeout(() => {
         message.classList.add('show');
+        triggerHaptic([50, 30, 50]);
         playSound(783.99, 0.2); // G5 note
       }, 8200);
     }
 
-    // Reset function
+    /**
+     * Reset animation to initial state
+     */
     function reset() {
       scene.classList.remove('bloom');
       card.classList.remove('hide');
@@ -922,17 +1027,36 @@
       startLoading();
     }
 
-    // Event listeners
+    // ========================= 
+    // EVENT LISTENERS 
+    // ========================= 
     bloomButton.addEventListener('click', bloom);
+    bloomButton.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        bloom();
+      }
+    });
+
     soundToggle.addEventListener('click', () => {
       soundEnabled = !soundEnabled;
       localStorage.setItem('soundEnabled', soundEnabled);
       soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+      triggerHaptic(30);
     });
-    resetBtn.addEventListener('click', reset);
 
-    // Initialize
+    resetBtn.addEventListener('click', () => {
+      triggerHaptic(30);
+      reset();
+    });
+
+    // ========================= 
+    // INITIALIZATION 
+    // ========================= 
     startLoading();
+
+    // Update sound toggle icon on load
+    soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
   </script>
 </body>
 </html>
