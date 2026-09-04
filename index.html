@@ -268,7 +268,21 @@
       position:relative;
       z-index:7;
     }
-    .scene.bloom .rose{ opacity:1; transform: scale(1); }
+    .scene.bloom .rose{ 
+      opacity:1; 
+      transform: scale(1); 
+      animation: roseGlow 3s ease-in-out 4.6s infinite, roseSpin 8s linear 4.6s infinite;
+    }
+
+    @keyframes roseGlow{
+      0%, 100%{ filter: drop-shadow(0 8px 12px rgba(80,0,12,.5)) brightness(1); }
+      50%{ filter: drop-shadow(0 12px 24px rgba(255,45,85,.6)) brightness(1.15); }
+    }
+
+    @keyframes roseSpin{
+      from{ transform: scale(1) rotate(0deg); }
+      to{ transform: scale(1) rotate(360deg); }
+    }
 
     .petal{
       position:absolute;
@@ -306,11 +320,27 @@
     .p14{ width:clamp(24px,5.6vw,40px); height:clamp(36px,7.6vw,56px); animation-delay:7.6s; transform: translate(-50%,-50%) rotate(8deg) translateY(-7px) scale(.66); background: radial-gradient(ellipse at 42% 20%, #ff5956 0%, #d01035 38%, #750019 76%, #350009 100%); }
 
     /* Bloom animation */
-    .scene.bloom .petal{ animation-name:petalBloom; animation-duration:1.2s; animation-timing-function:ease-out; animation-fill-mode:forwards; }
+    .scene.bloom .petal{ 
+      animation-name:petalBloom; 
+      animation-duration:1.2s; 
+      animation-timing-function:ease-out; 
+      animation-fill-mode:forwards;
+    }
+    
     @keyframes petalBloom{
       0%{ opacity:0; filter:brightness(.45); transform-origin:50% 90%; }
       50%{ opacity:.6; }
       100%{ opacity:1; filter:brightness(1); }
+    }
+
+    /* Petal pulse effect */
+    .scene.bloom .petal{
+      animation: petalBloom 1.2s ease-out forwards, petalPulse 2.5s ease-in-out 5.8s infinite;
+    }
+
+    @keyframes petalPulse{
+      0%, 100%{ filter: brightness(1) drop-shadow(0 3px 5px rgba(45,0,8,.25)); }
+      50%{ filter: brightness(1.2) drop-shadow(0 6px 12px rgba(255,45,85,.4)); }
     }
 
     /* Center */
@@ -327,7 +357,16 @@
       z-index:9;
       transition: opacity .7s;
     }
-    .scene.bloom .center{ opacity:1; transition-delay:7.8s; }
+    .scene.bloom .center{ 
+      opacity:1; 
+      transition-delay:7.8s;
+      animation: centerPulse 1.5s ease-in-out 7.8s infinite;
+    }
+
+    @keyframes centerPulse{
+      0%, 100%{ box-shadow: 0 0 8px rgba(255,89,104,.6); transform: scale(1); }
+      50%{ box-shadow: 0 0 16px rgba(255,45,85,.8); transform: scale(1.15); }
+    }
 
     /* Falling petals */
     .fallingPetal{
@@ -406,7 +445,18 @@
       transition: opacity 1.4s ease, transform 1.4s ease;
       z-index:12;
     }
-    .scene.bloom .message{ opacity:1; transform:translateX(-50%) translateY(0); transition-delay:10.4s; }
+    .scene.bloom .message{ 
+      opacity:1; 
+      transform:translateX(-50%) translateY(0); 
+      transition-delay:10.4s;
+      animation: messageFloat 2s ease-in-out 10.4s infinite;
+    }
+
+    @keyframes messageFloat{
+      0%, 100%{ transform:translateX(-50%) translateY(0); }
+      50%{ transform:translateX(-50%) translateY(-8px); }
+    }
+
     .messageText{ color:#d9d9d9; font-size: clamp(.95rem, 2.2vw, 1rem); font-style:italic; letter-spacing:.2px; }
     .messageRose{ margin-top:.45rem; font-size:1.05rem; opacity:.95; filter: drop-shadow(0 0 5px rgba(255,0,30,.3)); }
 
