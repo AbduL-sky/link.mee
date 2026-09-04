@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Love.css - A romantic animated rose experience">
+  <meta name="description" content="Love.css - A romantic animated rose experience, perfect for expressing your love">
+  <meta name="theme-color" content="#000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Love.css">
+  
   <title>Love.css 🌹</title>
 
   <style>
@@ -28,6 +33,24 @@
       /* Easings */
       --easing-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
       --easing-bounce: cubic-bezier(0.12, 0.75, 0.2, 1);
+    }
+
+    /* Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --timing-card-fade: 0.1s;
+        --timing-stem-grow: 0.5s;
+        --timing-rose-bloom: 0.5s;
+        --timing-message-show: 0.1s;
+      }
+      
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     * {
@@ -75,6 +98,7 @@
       background: rgba(110, 0, 20, 0.1);
       filter: blur(75px);
       transition: all 2s ease;
+      will-change: box-shadow;
     }
 
     .scene.bloom .redGlow {
@@ -107,6 +131,7 @@
       animation: float 4s ease-in forwards;
       filter: drop-shadow(0 0 6px rgba(255, 20, 60, 0.8));
       pointer-events: none;
+      will-change: transform;
     }
 
     .heart1 {
@@ -175,6 +200,7 @@
       opacity: 0;
       filter: drop-shadow(0 0 3px rgba(255, 100, 150, 0.9));
       pointer-events: none;
+      will-change: transform;
     }
 
     .spark1 {
@@ -248,6 +274,7 @@
       text-align: center;
       transition: opacity var(--timing-card-fade) ease,
         transform var(--timing-card-fade) ease;
+      will-change: opacity, transform;
     }
 
     .card.hide {
@@ -261,12 +288,14 @@
       font-size: 16px;
       margin-bottom: 5px;
       text-shadow: 0 0 8px #ff003c;
+      display: block;
     }
 
     .card__title {
       color: var(--color-text);
       font-size: 14px;
       margin-bottom: 12px;
+      font-weight: 600;
     }
 
     .card__loading {
@@ -274,6 +303,8 @@
       font-family: Arial, sans-serif;
       font-size: 7px;
       margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .progress {
@@ -291,6 +322,7 @@
       background: var(--color-accent);
       box-shadow: 0 0 8px var(--color-accent);
       transition: width 3s linear;
+      will-change: width;
     }
 
     .button {
@@ -306,6 +338,9 @@
       transition: all 0.4s ease;
       font-weight: 600;
       letter-spacing: 0.5px;
+      text-transform: uppercase;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .button:disabled {
@@ -319,6 +354,10 @@
       box-shadow: 0 0 10px rgba(255, 20, 80, 0.55),
         0 0 25px rgba(255, 20, 80, 0.2);
       cursor: pointer;
+    }
+
+    .button.ready:active {
+      transform: scale(0.98);
     }
 
     /* =========================
@@ -348,6 +387,7 @@
       text-shadow: 0 0 10px rgba(255, 35, 75, 0.65);
       transition: opacity 1.5s ease, transform 1.5s ease;
       white-space: nowrap;
+      will-change: opacity, transform;
     }
 
     .scene.bloom .rose__name {
@@ -376,6 +416,7 @@
       );
       box-shadow: 0 0 4px rgba(0, 255, 70, 0.2);
       transition: height var(--timing-stem-grow) var(--easing-smooth);
+      will-change: height;
     }
 
     .scene.bloom .stem {
@@ -398,6 +439,7 @@
       );
       opacity: 0;
       box-shadow: 0 0 5px rgba(0, 255, 60, 0.1);
+      will-change: opacity, transform;
     }
 
     .leaf.left {
@@ -453,6 +495,7 @@
       filter: drop-shadow(0 8px 12px rgba(80, 0, 12, 0.65));
       transition: transform var(--timing-rose-bloom) var(--easing-bounce),
         opacity 1s;
+      will-change: transform, opacity;
     }
 
     .scene.bloom .rose {
@@ -484,6 +527,7 @@
       transform-origin: 50% 90%;
       opacity: 0;
       animation-fill-mode: forwards;
+      will-change: opacity;
     }
 
     /* OUTER PETALS */
@@ -643,6 +687,7 @@
       opacity: 0;
       z-index: 10;
       transition: opacity 0.7s ease;
+      will-change: opacity;
     }
 
     .scene.bloom .center {
@@ -662,6 +707,7 @@
       border-radius: 100% 0 100% 0;
       background: #c9002c;
       opacity: 0;
+      will-change: transform;
     }
 
     .scene.bloom .fallingPetal {
@@ -724,6 +770,7 @@
       opacity: 0;
       transition: opacity var(--timing-message-show) ease,
         transform var(--timing-message-show) ease;
+      will-change: opacity, transform;
     }
 
     .message.show {
@@ -745,6 +792,46 @@
       font-size: 12px;
       opacity: 0.8;
       filter: drop-shadow(0 0 5px rgba(255, 0, 30, 0.5));
+      display: block;
+    }
+
+    /* =========================
+       CONTROLS OVERLAY
+    ========================= */
+
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
+
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 20, 80, 0.2);
+      color: var(--color-accent);
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 20, 80, 0.4);
+      transform: scale(1.1);
+    }
+
+    .control-btn:active {
+      transform: scale(0.95);
     }
 
     /* =========================
@@ -757,6 +844,19 @@
         height: 1280px;
         max-height: 100vh;
         transform: scale(min(1, calc(100vh / 1280)));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .controls {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
       }
     }
   </style>
@@ -777,14 +877,14 @@
         <div class="progress__bar" id="progressBar"></div>
       </div>
 
-      <button class="button" id="bloomButton" disabled aria-label="Tap to bloom">
+      <button class="button" id="bloomButton" disabled aria-label="Tap to bloom the rose">
         TAP TO BLOOM
       </button>
     </div>
 
     <!-- FLOWER SCENE -->
     <div class="flowerScene">
-      <div class="rose__name">I Miss You</div>
+      <div class="rose__name" id="roseName">I Miss You</div>
 
       <div class="stem"></div>
 
@@ -820,24 +920,34 @@
     </div>
 
     <!-- HEARTS -->
-    <div class="heart heart1">❤️</div>
-    <div class="heart heart2">❤️</div>
-    <div class="heart heart3">❤️</div>
-    <div class="heart heart4">❤️</div>
-    <div class="heart heart5">❤️</div>
+    <div class="heart heart1" aria-hidden="true">❤️</div>
+    <div class="heart heart2" aria-hidden="true">❤️</div>
+    <div class="heart heart3" aria-hidden="true">❤️</div>
+    <div class="heart heart4" aria-hidden="true">❤️</div>
+    <div class="heart heart5" aria-hidden="true">❤️</div>
 
     <!-- SPARKLES -->
-    <div class="sparkle spark1"></div>
-    <div class="sparkle spark2"></div>
-    <div class="sparkle spark3"></div>
-    <div class="sparkle spark4"></div>
-    <div class="sparkle spark5"></div>
+    <div class="sparkle spark1" aria-hidden="true"></div>
+    <div class="sparkle spark2" aria-hidden="true"></div>
+    <div class="sparkle spark3" aria-hidden="true"></div>
+    <div class="sparkle spark4" aria-hidden="true"></div>
+    <div class="sparkle spark5" aria-hidden="true"></div>
 
     <!-- FINAL MESSAGE -->
-    <div class="message" id="message">
-      <p class="message__text">With all my love...</p>
-      <div class="message__rose">🌹</div>
+    <div class="message" id="message" role="status" aria-live="polite">
+      <p class="message__text" id="messageText">With all my love...</p>
+      <div class="message__rose" aria-hidden="true">🌹</div>
     </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button class="control-btn" id="soundToggle" title="Toggle sound" aria-label="Toggle sound">
+      🔊
+    </button>
+    <button class="control-btn" id="resetBtn" title="Reset animation" aria-label="Reset animation">
+      ↻
+    </button>
   </div>
 
   <script>
@@ -848,40 +958,147 @@
     const progressBar = document.getElementById('progressBar');
     const loadingText = document.getElementById('loadingText');
     const message = document.getElementById('message');
+    const messageText = document.getElementById('messageText');
+    const roseName = document.getElementById('roseName');
+    const soundToggle = document.getElementById('soundToggle');
+    const resetBtn = document.getElementById('resetBtn');
 
-    // Simulate loading
-    let progress = 0;
-    const loadingInterval = setInterval(() => {
-      progress += Math.random() * 30;
-      if (progress > 100) progress = 100;
+    // State
+    let isBloomActive = false;
+    let soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
+    let customMessage = new URLSearchParams(window.location.search).get('msg') || 'With all my love...';
 
-      progressBar.style.width = progress + '%';
-      loadingText.textContent = Math.floor(progress) + '% loading...';
+    // Set custom message
+    messageText.textContent = customMessage;
 
-      if (progress === 100) {
-        clearInterval(loadingInterval);
-        bloomButton.disabled = false;
-        bloomButton.classList.add('ready');
+    // Sound effects (using Web Audio API for no external dependencies)
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playSound(frequency, duration) {
+      if (!soundEnabled) return;
+      
+      try {
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+        
+        oscillator.frequency.value = frequency;
+        oscillator.type = 'sine';
+        
+        gain.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + duration);
+      } catch (e) {
+        console.log('Audio not available');
       }
-    }, 300);
+    }
 
-    // Bloom on click
-    bloomButton.addEventListener('click', () => {
+    // Simulate loading with progress bar
+    function startLoading() {
+      let progress = 0;
+      const loadingInterval = setInterval(() => {
+        progress += Math.random() * 30;
+        if (progress > 100) progress = 100;
+
+        progressBar.style.width = progress + '%';
+        loadingText.textContent = Math.floor(progress) + '% loading...';
+
+        if (progress === 100) {
+          clearInterval(loadingInterval);
+          bloomButton.disabled = false;
+          bloomButton.classList.add('ready');
+          playSound(523.25, 0.2); // C note
+        }
+      }, 300);
+    }
+
+    // Bloom animation with sound
+    function triggerBloom() {
+      if (isBloomActive) return;
+      isBloomActive = true;
+      
       scene.classList.add('bloom');
       card.classList.add('hide');
+      
+      playSound(659.25, 0.3); // E note
+      setTimeout(() => playSound(783.99, 0.4), 200); // G note
       
       // Show message after delay
       setTimeout(() => {
         message.classList.add('show');
+        playSound(659.25, 0.5); // Final E note
       }, 8500);
-    });
+    }
 
-    // Keyboard support
+    // Reset function
+    function resetAnimation() {
+      isBloomActive = false;
+      scene.classList.remove('bloom');
+      card.classList.remove('hide');
+      message.classList.remove('show');
+      bloomButton.disabled = true;
+      bloomButton.classList.remove('ready');
+      progressBar.style.width = '0%';
+      loadingText.textContent = 'Loading love...';
+      startLoading();
+      playSound(440, 0.2);
+    }
+
+    // Event listeners
+    bloomButton.addEventListener('click', triggerBloom);
+    
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && bloomButton.classList.contains('ready')) {
         bloomButton.click();
       }
+      if (e.key === ' ') {
+        e.preventDefault();
+        bloomButton.click();
+      }
     });
+
+    // Touch feedback for mobile
+    bloomButton.addEventListener('touchstart', () => {
+      bloomButton.style.transform = 'scale(0.95)';
+    });
+
+    bloomButton.addEventListener('touchend', () => {
+      bloomButton.style.transform = 'scale(1)';
+    });
+
+    // Sound toggle
+    soundToggle.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('soundEnabled', soundEnabled);
+      soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+      playSound(440, 0.1);
+    });
+
+    // Reset button
+    resetBtn.addEventListener('click', resetAnimation);
+
+    // Accessibility: Announce bloom completion
+    scene.addEventListener('animationend', () => {
+      if (scene.classList.contains('bloom')) {
+        message.setAttribute('aria-live', 'assertive');
+      }
+    });
+
+    // Respect prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      soundEnabled = false; // Disable sound for users preferring reduced motion
+    }
+
+    // Initialize
+    startLoading();
+    
+    // Update sound toggle text on load
+    soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
   </script>
 </body>
 </html>
