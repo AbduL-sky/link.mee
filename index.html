@@ -1076,7 +1076,7 @@
     <div class="flowerScene">
 
       <div class="rose__name">
-        For You ❤️
+        I Miss You ❤️
       </div>
 
       <div class="rose" id="rose">
@@ -1155,17 +1155,8 @@
         aria-label="Replay animation"
       >
         ↻
-      </button>
-
-      <button
-        class="control-btn"
-        id="soundBtn"
-        title="Sound"
-        aria-label="Toggle sound"
-      >
-        🔇
-      </button>
-
+      </button> 
+      
     </div>
 
   </main>
@@ -1300,25 +1291,7 @@
       oscillator.start();
 
       oscillator.stop(
-        audioContext.currentTime + 5
-      );
-    }
-
-    /* =========================
-       SOUND BUTTON
-    ========================= */
-
-    soundBtn.addEventListener("click", () => {
-
-      soundOn = !soundOn;
-
-      soundBtn.textContent =
-        soundOn ? "🔊" : "🔇";
-
-      if (soundOn) {
-        startSound();
-      }
-
+        audioContext.currentTime
     });
 
   </script>
