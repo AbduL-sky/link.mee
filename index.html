@@ -12,7 +12,7 @@
     :root{
       --bg:#050207;
       --card-bg:linear-gradient(145deg, rgba(32,5,12,.95), rgba(13,2,6,.95));
-      --accent:#ff2d55;    /* primary rose color */
+      --accent:#ff2d55;
       --accent-weak:rgba(255,45,85,.12);
       --muted:#9aa0a6;
       --glass:#1b0b0f;
@@ -22,7 +22,6 @@
       --transition:300ms ease;
     }
 
-    /* Respect reduced motion preference */
     @media (prefers-reduced-motion: reduce) {
       *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
     }
@@ -38,7 +37,6 @@
       line-height:1.35;
     }
 
-    /* Centered app container so it scales nicely across devices */
     .app{
       min-height:100vh;
       display:flex;
@@ -50,7 +48,7 @@
     .scene{
       width:100%;
       max-width:var(--max-width);
-      aspect-ratio: 9 / 16; /* portrait feel; scales on wide screens */
+      aspect-ratio: 9 / 16;
       background:transparent;
       position:relative;
       overflow:hidden;
@@ -60,7 +58,6 @@
       box-sizing:border-box;
     }
 
-    /* subtle red atmosphere */
     .redGlow{
       position:absolute;
       inset:0;
@@ -158,7 +155,7 @@
 
     .bloomButton{
       width:100%;
-      min-height:44px; /* accessible tap target */
+      min-height:44px;
       margin-top:6px;
       border:0;
       border-radius:6px;
@@ -259,7 +256,7 @@
     @keyframes leafLeft{ to{ opacity:1; transform: rotate(-25deg) scale(1); } }
     @keyframes leafRight{ to{ opacity:1; transform: rotate(25deg) scale(1); } }
 
-    /* ROSE and PETALS: kept structure but relative sizing */
+    /* ROSE and PETALS */
     .rose{
       width:clamp(110px, 30vw, 180px);
       height:auto;
@@ -288,7 +285,7 @@
       background: radial-gradient(ellipse at 42% 18%, #ff8b91 0%, #e92b4c 24%, #a0002b 62%, #350009 100%);
     }
 
-    /* Position classes (kept simplified; rotate + offset) */
+    /* Position classes */
     .p1{ transform: translate(-50%,-50%) rotate(-68deg) translateY(-11px) scale(.94); animation-delay:4.6s; }
     .p2{ transform: translate(-50%,-50%) rotate(-43deg) translateY(-23px) scale(.92); animation-delay:4.8s; }
     .p3{ transform: translate(-50%,-50%) rotate(-18deg) translateY(-32px) scale(.89); animation-delay:5s; }
@@ -296,7 +293,7 @@
     .p5{ transform: translate(-50%,-50%) rotate(43deg) translateY(-23px) scale(.92); animation-delay:5.4s; }
     .p6{ transform: translate(-50%,-50%) rotate(68deg) translateY(-11px) scale(.94); animation-delay:5.6s; }
 
-    /* second layer */
+    /* Second layer */
     .p7,.p8,.p9,.p10,.p11{ background: radial-gradient(ellipse at 45% 20%, #ff596d 0%, #dc103d 35%, #820021 72%, #350009 100%); }
     .p7{ animation-delay:6s; transform: translate(-50%,-50%) rotate(-58deg) translateY(-13px) scale(.78); }
     .p8{ animation-delay:6.2s; transform: translate(-50%,-50%) rotate(-31deg) translateY(-20px) scale(.76); }
@@ -304,11 +301,11 @@
     .p10{ animation-delay:6.6s; transform: translate(-50%,-50%) rotate(29deg) translateY(-19px) scale(.76); }
     .p11{ animation-delay:6.8s; transform: translate(-50%,-50%) rotate(57deg) translateY(-12px) scale(.78); }
 
-    .p12{ width:clamp(30px,7.2vw,48px); height:clamp(44px,9.6vw,68px); animation-delay:7.2s; transform: translate(-50%,-50%) rotate(-25deg) translateY(-11px) scale(.68); background: radial-gradient(ellipse at 42% 18%, #ff8b91 0%, #e92b4c 24%, #a0002b 62%, #350009 100%); }
-    .p13{ width:clamp(30px,7.2vw,48px); height:clamp(44px,9.6vw,68px); animation-delay:7.4s; transform: translate(-50%,-50%) rotate(23deg) translateY(-10px) scale(.68); }
-    .p14{ width:clamp(24px,5.6vw,40px); height:clamp(36px,7.6vw,56px); animation-delay:7.6s; transform: translate(-50%,-50%) rotate(8deg) translateY(-7px) scale(.66); }
+    .p12{ width:clamp(30px,7.2vw,48px); height:clamp(44px,9.6vw,68px); animation-delay:7.2s; transform: translate(-50%,-50%) rotate(-25deg) translateY(-11px) scale(.68); background: radial-gradient(ellipse at 42% 20%, #ff5956 0%, #d01035 38%, #750019 76%, #350009 100%); }
+    .p13{ width:clamp(30px,7.2vw,48px); height:clamp(44px,9.6vw,68px); animation-delay:7.4s; transform: translate(-50%,-50%) rotate(23deg) translateY(-10px) scale(.68); background: radial-gradient(ellipse at 42% 20%, #ff5956 0%, #d01035 38%, #750019 76%, #350009 100%); }
+    .p14{ width:clamp(24px,5.6vw,40px); height:clamp(36px,7.6vw,56px); animation-delay:7.6s; transform: translate(-50%,-50%) rotate(8deg) translateY(-7px) scale(.66); background: radial-gradient(ellipse at 42% 20%, #ff5956 0%, #d01035 38%, #750019 76%, #350009 100%); }
 
-    /* bloom animation */
+    /* Bloom animation */
     .scene.bloom .petal{ animation-name:petalBloom; animation-duration:1.2s; animation-timing-function:ease-out; animation-fill-mode:forwards; }
     @keyframes petalBloom{
       0%{ opacity:0; filter:brightness(.45); transform-origin:50% 90%; }
@@ -316,7 +313,7 @@
       100%{ opacity:1; filter:brightness(1); }
     }
 
-    /* center */
+    /* Center */
     .center{
       position:absolute;
       left:50%;
@@ -332,7 +329,7 @@
     }
     .scene.bloom .center{ opacity:1; transition-delay:7.8s; }
 
-    /* falling petals */
+    /* Falling petals */
     .fallingPetal{
       position:absolute;
       top:-12px;
@@ -356,7 +353,7 @@
       100%{ opacity:0; transform: translateY(720px) translateX(-80px) rotate(360deg); }
     }
 
-    /* floating hearts */
+    /* Floating hearts */
     .heart{
       position:absolute;
       font-size:clamp(14px,3.2vw,26px);
@@ -378,7 +375,7 @@
       100%{ opacity:0; transform: translateY(-200px) scale(.8); }
     }
 
-    /* sparkles */
+    /* Sparkles */
     .sparkle{
       position:absolute;
       width:6px;
@@ -397,7 +394,7 @@
     .spark5{ left:calc(50% - 70px); top:calc(50% + 10px); animation:twinkle 1.9s ease-in-out infinite; animation-delay:8.7s; }
     @keyframes twinkle{ 0%,100%{ opacity:0; transform:scale(0); } 50%{ opacity:1; transform:scale(1); } }
 
-    /* final message */
+    /* Final message */
     .message{
       position:absolute;
       left:50%;
@@ -413,7 +410,7 @@
     .messageText{ color:#d9d9d9; font-size: clamp(.95rem, 2.2vw, 1rem); font-style:italic; letter-spacing:.2px; }
     .messageRose{ margin-top:.45rem; font-size:1.05rem; opacity:.95; filter: drop-shadow(0 0 5px rgba(255,0,30,.3)); }
 
-    /* responsive adjustments */
+    /* Responsive adjustments */
     @media (max-width:420px){
       .flowerScene{ top:40%; transform:translate(-50%,-4%); }
       .scene{ padding:12px; border-radius:.5rem; }
@@ -491,7 +488,7 @@
       <div class="sparkle spark5" aria-hidden="true"></div>
 
       <div class="message" id="message" aria-hidden="true">
-        <div class="messageText">This for you  PePe🥹🫂.</div>
+        <div class="messageText">This for you PePe🥹🫂.</div>
         <div class="messageRose">🌹</div>
       </div>
     </section>
@@ -506,9 +503,7 @@
       const loadingText = document.getElementById('loadingText');
       const message = document.getElementById('message');
 
-      // Use DOMContentLoaded for faster initialization
       window.addEventListener('DOMContentLoaded', () => {
-        // Simulated load progress for graceful UX
         setTimeout(() => {
           progress.style.width = '100%';
         }, 180);
@@ -518,11 +513,10 @@
           button.disabled = false;
           button.classList.add('ready');
           button.setAttribute('aria-disabled', 'false');
-          button.focus(); // optional: focus to indicate ready
+          button.focus();
         }, 2200);
       });
 
-      // Bloom action: provide keyboard support (Enter/Space)
       function startBloom() {
         if (button.disabled) return;
         button.disabled = true;
@@ -540,7 +534,6 @@
 
         setTimeout(() => {
           message.setAttribute('aria-hidden', 'false');
-          message.classList.add('show');
         }, 10500);
       }
 
@@ -553,10 +546,8 @@
         }
       });
 
-      // If user prefers reduced motion, reduce timing and don't auto-focus
       const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) {
-        // shorten animation timings and skip focus
         progress.style.transitionDuration = '600ms';
       }
 
